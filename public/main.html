@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <button class="close-btn" onclick="closeMenu()">×</button>
+        <div class="menu-header">
+            <p><a href="#" class="nav-link admin-link-mobile">로그인 / 회원가입</a></p>
+            <p><a href="#" class="nav-link admin-link-mobile">[관리자 모드]</a></p>
+        </div>
+        <ul class="main-menu-vertical">
+            <li><a href="#">NEW ARRIVAL</a></li>
+            <li><a href="#">BEST</a></li>
+            <li><a href="#">TOP</a></li>
+            <li><a href="#">BOTTOM</a></li>
+            <li><a href="#">ACC</a></li>
+            <li><a href="#">SALE</a></li>
+        </ul>
+        <div class="menu-footer">
+            <a href="#">고객센터</a>
+            <a href="#">공지사항</a>
+        </div>
+    </div>
+
+    <div id="page-container">
+        <div class="top-announcement-bar">
+            <a href="#">
+                <p> 🎁5만원 이상 구매 시 10% 쿠폰 즉시 지급!🎁 </p>
+            </a>
+        </div>
+
+        <header class="utility-bar">
+            <nav class="nav-left-utility">
+                <button class="hamburger-btn" onclick="openMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="admin.html" class="nav-link admin-link-desktop utility-item">[관리자]</a>
+                <a href="login.html" class="nav-link utility-item"><i class="fas fa-user"></i> 로그인</a>
+                <a href="cart.html" class="nav-link cart-link utility-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+
+            <div class="search-bar-container utility-item">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-input">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="nav-right-spacer"></div>
+        </header>
+
+        <div class="logo-bar">
+            <h1 class="logo"><a href="#">Pastel Shop</a></h1>
+        </div>
+
+        <nav class="full-width-category-nav">
+            <ul>
+                <li><a href="#">NEW ARRIVAL</a></li>
+                <li><a href="#">BEST</a></li>
+                <li><a href="#">TOP</a></li>
+                <li><a href="#">BOTTOM</a></li>
+                <li><a href="#">ACC</a></li>
+                <li><a href="#">SALE</a></li>
+            </ul>
+        </nav>
+
+        <section class="full-width-slider-section">
+            <div class="slider-container">
+                <div class="slide">
+                    <a href="#">
+                        <h2>✨ NEW 시즌 파스텔 컬렉션 20% 할인 ✨</h2>
+                    </a>
+                    <img src="./shopping-mall-1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <a href="#">
+                        <h2>🎁 첫 구매 고객 전용 사은품 증정!</h2>
+                    </a>
+                    <img src="./shopping-mall-2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <a href="#">
+                        <h2>🌈 여름 한정! 액세서리 30% 특가!</h2>
+                    </a>
+                    <img src="./shopping-mall-3.jpg" alt="">
+                </div>
+            </div>
+            <button class="slider-arrow left-arrow"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow right-arrow"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+
+        <main class="main-content-full">
+            <h2 style="margin-top: 50px;">오늘의 추천 상품</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">파스텔 니트</p>
+                    <p class="product-price">39,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">세련된 셔츠</p>
+                    <p class="product-price">54,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">기본 티셔츠</p>
+                    <p class="product-price">22,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">트렌치 코트</p>
+                    <p class="product-price">99,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">스커트</p>
+                    <p class="product-price">45,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">원피스</p>
+                    <p class="product-price">68,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">스커트</p>
+                    <p class="product-price">45,000원</p><button class="cta-button">구매하기</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">[상품 이미지]</div>
+                    <p class="product-name">원피스</p>
+                    <p class="product-price">68,000원</p><button class="cta-button">구매하기</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-container">
+            <section class="my-shopping-section">
+                <div class="shopping-widget">
+                    <h2>나의 쇼핑</h2>
+                    <p>최근 본 상품</p>
+                    <div class="mini-product">[미니 상품 이미지]</div>
+                </div>
+            </section>
+            <div class="footer">
+                <div class="shopping-widget cs-widget">
+                    <h2>고객센터</h2>
+                    <p class="phone-number">02-1234-5678</p>
+                    <p class="time">평일 10:00 ~ 17:00</p>
+                </div>
+                <p>&copy; 2025 Pastel Shop. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 햄버거 메뉴는 그대로 유지
+        function openMenu() {
+            document.getElementById("sidebarMenu").style.width = "250px";
+            document.getElementById("page-container").style.marginLeft = "250px";
+        }
+        function closeMenu() {
+            document.getElementById("sidebarMenu").style.width = "0";
+            document.getElementById("page-container").style.marginLeft = "0";
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // === 1. 이미지 슬라이드 로직 ===
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            const sliderContainer = document.querySelector('.slider-container');
+            const dots = document.querySelectorAll('.dot');
+            const leftArrow = document.querySelector('.left-arrow');
+            const rightArrow = document.querySelector('.right-arrow');
+            const slideIntervalTime = 5000; // 5초 간격으로 자동 슬라이드
+
+            // 이미지 배경 설정 함수 (CSS에서 처리할 예정이지만, JS에서도 가능)
+
+            $(function () {
+    const slideCount = 3; // 오리지널 슬라이드 개수
+    const $sliderContainer = $(".slider-container");
+    const $dots = $(".slider-dots .dot");
+    const $leftArrow = $(".left-arrow");
+    const $rightArrow = $(".right-arrow");
+    let currentIndex = 0; // 현재 슬라이드 인덱스 (0, 1, 2, 3)
+    let autoSlideInterval;
+
+    // ⭐️ 무한 슬라이드를 위해 첫 번째 슬라이드를 복제하여 맨 뒤에 추가
+    $sliderContainer.append($(".slide").first().clone(true));
+
+    // 슬라이드 이동 함수 (모든 조작에 사용)
+    function moveSlide(index) {
+        currentIndex = index;
+
+        // 애니메이션 실행
+        $sliderContainer.animate({ marginLeft: -currentIndex * 100 + "%" }, 600, function() {
+            // 마지막 복제된 슬라이드에 도달하면 순간적으로 0번 슬라이드로 리셋
+            if (currentIndex === slideCount) {
+                $sliderContainer.css("margin-left", 0);
+                currentIndex = 0;
+            }
+        });
+
+        // 점 업데이트
+        const activeDotIndex = currentIndex % slideCount;
+        $dots.removeClass('active');
+        $dots.eq(activeDotIndex).addClass('active');
+    }
+
+    // 자동 슬라이드 시작/정지 함수
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        
+        autoSlideInterval = setInterval(function () {
+            moveSlide(currentIndex + 1);
+        }, 3000); // 3초 간격
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+
+    // 1. 화살표 클릭 이벤트 핸들러 (새로 추가된 기능)
+    $rightArrow.on('click', function() {
+        stopAutoSlide();
+        moveSlide(currentIndex + 1);
+        startAutoSlide();
+    });
+
+    $leftArrow.on('click', function() {
+        stopAutoSlide();
+        // 0번에서 왼쪽으로 갈 때, 무한 루프 처리를 위한 순간 이동
+        if (currentIndex === 0) {
+            $sliderContainer.css("margin-left", -slideCount * 100 + "%");
+            currentIndex = slideCount;
+        }
+
+        moveSlide(currentIndex - 1);
+        startAutoSlide();
+    });
+
+    // 2. 점 클릭 이벤트 핸들러 (새로 추가된 기능)
+    $dots.on('click', function() {
+        stopAutoSlide();
+        const dotIndex = $(this).index();
+        moveSlide(dotIndex);
+        startAutoSlide();
+    });
+
+    // 초기 실행
+    startAutoSlide();
+
+
+    // 3. 스크롤 Fixed 로직 (기존 코드에서 이동 및 정리)
+    const categoryNav = document.querySelector('.full-width-category-nav');
+    if (categoryNav) {
+        const scrollTrigger = categoryNav.offsetTop;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            const shouldFix = currentScroll >= scrollTrigger;
+            categoryNav.classList.toggle('fixed', shouldFix);
+        });
+    }
+});
+
+            // === 2. 스크롤 Fixed 로직 (이전과 동일) ===
+            const categoryNav = document.querySelector('.full-width-category-nav');
+
+            if (categoryNav) {
+                const scrollTrigger = categoryNav.offsetTop;
+
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.scrollY;
+                    const shouldFix = currentScroll >= scrollTrigger;
+
+                    categoryNav.classList.toggle('fixed', shouldFix);
+                });
+            }
+            
+        });
+    </script>
+</body>
+
+</html>

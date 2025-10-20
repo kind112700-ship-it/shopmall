@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+     <link rel="stylesheet" href="cart.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    </head>
+<body>
+
+    <div class="cart-container">
+        <h1 class="cart-header">나의 장바구니</h1>
+
+        <div class="cart-items">
+            <!-- 장바구니 상품 1 (원피스: 68,000원) -->
+            <div class="cart-item" data-price="68000">
+                <div class="product-info">
+                    <img src="https://placehold.co/90x90/5d34a4/ffffff?text=One-piece" onerror="this.onerror=null;this.src='https://placehold.co/90x90/5d34a4/ffffff?text=Dress'" alt="상품 이미지" class="product-image">
+                    <div class="details">
+                        <span class="product-name">원피스</span>
+                        <span class="product-option">색상: 블랙 / 크기: Free</span>
+                    </div>
+                </div>
+                
+                <div class="quantity-control">
+                    <button class="quantity-btn minus" data-action="minus">-</button>
+                    <!-- data-price와 value가 1이므로 초기 총액은 68,000원 -->
+                    <input type="text" value="1" class="quantity-input" data-quantity="1" readonly>
+                    <button class="quantity-btn plus" data-action="plus">+</button>
+                </div>
+
+                <div class="price-row">
+                    <div class="price">
+                        <span class="unit-price">68,000</span>원
+                    </div>
+                    <div class="item-total-price">
+                        <span class="total-price-value">68,000</span>원
+                    </div>
+                </div>
+
+                <button class="remove-btn">삭제</button>
+            </div>
+
+            <!-- 장바구니 상품 2 (파스텔니트: 39,000원 * 2개 = 78,000원) -->
+            <div class="cart-item" data-price="39000">
+                <div class="product-info">
+                    <img src="https://placehold.co/90x90/5d34a4/ffffff?text=Knit" onerror="this.onerror=null;this.src='https://placehold.co/90x90/5d34a4/ffffff?text=PastelKnit'" alt="상품 이미지" class="product-image">
+                    <div class="details">
+                        <span class="product-name">파스텔니트</span>
+                        <span class="product-option">색상: 블루 / 수량: 1세트</span>
+                    </div>
+                </div>
+                
+                <div class="quantity-control">
+                    <button class="quantity-btn minus" data-action="minus">-</button>
+                    <!-- data-price와 value가 2이므로 초기 총액은 78,000원 -->
+                    <input type="text" value="2" class="quantity-input" data-quantity="2" readonly>
+                    <button class="quantity-btn plus" data-action="plus">+</button>
+                </div>
+                
+                <div class="price-row">
+                    <div class="price">
+                        <span class="unit-price">39,000</span>원
+                    </div>
+                    <div class="item-total-price">
+                        <span class="total-price-value">78,000</span>원
+                    </div>
+                </div>
+                
+                <button class="remove-btn">삭제</button>
+            </div>
+        </div>
+        
+        <!-- 요약 섹션 -->
+        <div class="cart-summary-wrapper">
+            <div class="cart-summary">
+                <h2 class="text-xl font-semibold mb-3">결제 예상 금액</h2>
+                <div class="summary-line">
+                    <span>상품 금액</span>
+                    <span class="summary-value product-subtotal font-medium">146,000원</span>
+                </div>
+                <div class="summary-line">
+                    <span>배송비</span>
+                    <span class="summary-value shipping-fee font-medium">무료</span>
+                </div>
+                <div class="summary-total">
+                    <span>총 결제 금액</span>
+                    <span class="summary-value final-total">146,000원</span>
+                </div>
+                <button class="checkout-btn">주문하기</button>
+            </div>
+        </div>
+
+        <div class="continue-shopping">
+            <!-- '계속 쇼핑하기' 링크는 메인 페이지로 이동합니다. -->
+            <a href="main.html">계속 쇼핑하기</a>
+        </div>
+    </div>
+    
+    <script>
+        // 숫자를 콤마 형식으로 변환하는 함수
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // 전체 합계 계산 및 업데이트 함수
+        function updateCartSummary() {
+            const items = document.querySelectorAll('.cart-item');
+            let subtotal = 0;
+            // 배송비 설정 (상품 금액 50,000원 이상 시 무료)
+            const minFreeShipping = 50000;
+            const standardShippingFee = 3000;
+            let shippingFee = 0;
+            
+            // 모든 상품의 총액을 합산
+            items.forEach(item => {
+                const itemPriceElement = item.querySelector('.total-price-value');
+                // 콤마 제거 후 정수로 변환
+                const priceText = itemPriceElement.textContent.replace(/,/g, '');
+                subtotal += parseInt(priceText) || 0;
+            });
+            
+            const itemsContainer = document.querySelector('.cart-items');
+            const summaryWrapper = document.querySelector('.cart-summary-wrapper');
+
+            // 1. 장바구니가 비었을 때 처리
+            if(subtotal === 0) {
+                 // 항목이 없다면 '장바구니가 비었습니다' 메시지 출력
+                 if (itemsContainer.querySelectorAll('.empty-cart').length === 0) {
+                     itemsContainer.innerHTML = '<div class="empty-cart text-center py-10 text-gray-500 text-lg border border-dashed border-gray-300 rounded-md">장바구니에 담긴 상품이 없습니다.</div>';
+                 }
+                 // 요약 섹션 숨기기
+                 if (summaryWrapper) summaryWrapper.style.display = 'none';
+                 
+                 // UI 업데이트 (0원, 무료)
+                 document.querySelector('.product-subtotal').textContent = '0원';
+                 document.querySelector('.shipping-fee').textContent = '0원';
+                 document.querySelector('.final-total').textContent = '0원';
+                 return; // 계산 종료
+            } else {
+                // 상품이 있으면 요약 섹션 표시
+                if (summaryWrapper) summaryWrapper.style.display = 'block';
+            }
+
+
+            // 2. 배송비 계산
+            shippingFee = (subtotal >= minFreeShipping) ? 0 : standardShippingFee;
+
+            // 최종 총액 계산
+            const finalTotal = subtotal + shippingFee;
+
+            // UI 업데이트
+            document.querySelector('.product-subtotal').textContent = formatNumber(subtotal) + '원';
+            
+            // 배송비 텍스트 처리
+            const shippingText = (shippingFee === 0) ? '무료' : formatNumber(shippingFee) + '원';
+            document.querySelector('.shipping-fee').textContent = shippingText;
+            
+            document.querySelector('.final-total').textContent = formatNumber(finalTotal) + '원';
+        }
+
+        // 수량 조절 및 개별 상품 총액 업데이트 함수
+        function updateQuantityAndTotal(item, delta) {
+            const input = item.querySelector('.quantity-input');
+            let quantity = parseInt(input.value);
+            // data-price에서 단가 가져오기
+            const unitPrice = parseInt(item.dataset.price);
+
+            // 새 수량 계산 (최소 수량 1)
+            quantity = Math.max(1, quantity + delta);
+
+            // UI 업데이트
+            input.value = quantity;
+            const newTotal = unitPrice * quantity;
+            item.querySelector('.total-price-value').textContent = formatNumber(newTotal);
+
+            // 전체 요약 업데이트
+            updateCartSummary();
+        }
+
+        // 이벤트 리스너 설정
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartContainer = document.querySelector('.cart-container');
+            const checkoutBtn = document.querySelector('.checkout-btn'); 
+            
+            // 초기 합계 계산
+            updateCartSummary();
+
+            cartContainer.addEventListener('click', (e) => {
+                const target = e.target;
+                const item = target.closest('.cart-item');
+
+                // 햄버거 버튼이나 다른 요소를 클릭했을 수도 있으므로, cart-item 내의 버튼만 처리
+                if (item) {
+                    // 수량 조절 버튼 클릭
+                    if (target.classList.contains('quantity-btn')) {
+                        const action = target.dataset.action;
+                        const delta = (action === 'plus') ? 1 : -1;
+                        updateQuantityAndTotal(item, delta);
+                    }
+
+                    // 삭제 버튼 클릭 (확인창 없이 바로 삭제)
+                    if (target.classList.contains('remove-btn')) {
+                        item.remove(); // 바로 항목 삭제
+                        updateCartSummary(); // 장바구니 요약 업데이트
+                    }
+                }
+            });
+            
+            // ⭐ 주문하기 버튼 클릭 시 다음 페이지로 이동 로직 ⭐
+            checkoutBtn.addEventListener('click', () => {
+                // 장바구니에 상품이 있는지 확인 (상품 총액이 0보다 큰지)
+                const subtotalText = document.querySelector('.product-subtotal').textContent.replace(/[^0-9]/g, '');
+                const subtotal = parseInt(subtotalText) || 0;
+
+                if (subtotal === 0) {
+                    // 장바구니가 비었을 경우 알림 (alert 대신 콘솔 로그를 사용하며, 실제 앱에서는 모달을 사용해야 합니다.)
+                    console.warn('장바구니에 상품이 없습니다. 상품을 담아주세요.');
+                    return; 
+                }
+                
+                // 상품이 있다면 결제 페이지로 이동 시뮬레이션
+                console.log('✅ 주문 페이지 (checkout.html)로 이동합니다.');
+                // 가상의 결제 페이지로 이동
+                window.location.href = 'checkout.html';
+            });
+        });
+    </script>
+</body>
+</html>

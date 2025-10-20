@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastel Shop 관리자 페이지</title>
+    <link rel="stylesheet" href="admin.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="admin-wrapper">
+        <nav class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>Admin Dashboard</h2>
+            </div>
+            <ul class="admin-menu">
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> 대시보드</a></li>
+                <li><a href="#"><i class="fas fa-box-open"></i> 상품 관리</a></li>
+                <li><a href="#"><i class="fas fa-truck"></i> 주문 관리</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> 고객 관리</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> 통계 분석</a></li>
+                <li class="logout"><a href="index.html"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></li>
+            </ul>
+        </nav>
+
+        <div class="admin-main-content">
+            <header class="admin-topbar">
+                <div class="topbar-left">
+                    <h1>대시보드</h1>
+                </div>
+                <div class="topbar-right">
+                    <p>관리자님, 환영합니다!</p>
+                    <a href="#" class="profile-icon"><i class="fas fa-user-circle"></i></a>
+                </div>
+            </header>
+
+            <main class="dashboard-widgets">
+                <div class="widget summary-card total-sales">
+                    <i class="fas fa-won-sign icon"></i>
+                    <h3>오늘 매출</h3>
+                    <p>1,250,000원</p>
+                </div>
+                <div class="widget summary-card new-orders">
+                    <i class="fas fa-shopping-cart icon"></i>
+                    <h3>신규 주문</h3>
+                    <p>15건</p>
+                </div>
+                <div class="widget summary-card new-users">
+                    <i class="fas fa-user-plus icon"></i>
+                    <h3>신규 가입</h3>
+                    <p>23명</p>
+                </div>
+                <div class="widget summary-card stock-alerts">
+                    <i class="fas fa-exclamation-triangle icon"></i>
+                    <h3>재고 부족</h3>
+                    <p>5개 상품</p>
+                </div>
+
+                <div class="widget full-width-table">
+                    <h3>최근 주문 현황</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>주문 번호</th>
+                                <th>고객명</th>
+                                <th>총 금액</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#20251017-001</td>
+                                <td>김*희</td>
+                                <td>45,000원</td>
+                                <td><span class="status pending">결제 대기</span></td>
+                            </tr>
+                            <tr>
+                                <td>#20251017-002</td>
+                                <td>이*준</td>
+                                <td>123,000원</td>
+                                <td><span class="status shipping">배송 중</span></td>
+                            </tr>
+                            <tr>
+                                <td>#20251017-003</td>
+                                <td>박*영</td>
+                                <td>39,000원</td>
+                                <td><span class="status completed">배송 완료</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+/* login.css */
+
+/* 기본 설정 */
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* 밝은 배경 */
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    min-height: 100vh;
+}
+
+/* 로그인 컨테이너 (화면 전체) */
+.login-container {
+    width: 100%;
+   
+}
+
+/* 로그인 박스 (폼 자체) */
+.login-box {
+    width: 100%;
+    max-width: 400px; /* 최대 너비 제한 */
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+     margin: 0 auto;
+}
+
+.logo-title {
+    font-size: 32px;
+    color: #5d34a4; /* 파스텔 테마 색상 */
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* 입력 그룹 */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #34495e;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #5d34a4;
+    outline: none;
+}
+
+.input-group label i {
+    margin-right: 5px;
+    color: #5d34a4;
+}
+
+/* 옵션 및 링크 그룹 */
+.options-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.find-link {
+    color: #7f8c8d;
+    text-decoration: none;
+}
+
+.find-link:hover {
+    color: #5d34a4;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #5d34a4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #4a2884;
+}
+
+/* 추가 링크 */
+.extra-links {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.extra-links a {
+    color: #5d34a4;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
